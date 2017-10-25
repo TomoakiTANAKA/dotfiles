@@ -1,0 +1,68 @@
+[alias]
+  # === branch ===
+  br = branch                   # just alias
+  branches = branch -a          # show all branches
+  rename-branch = branch -m     # rename current branch name
+  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d % # clean local branch
+
+  # === tag ===
+  tags = tag
+
+  # === stash ===
+  stashes = stash list
+
+  # === remote ===
+  remotes = remote -v
+
+  # === status ====
+  st = status       # just alias
+  sts = status -s   # show status and file only
+  stt = status -uno # show staged and not staged file, nothing show Untracked files
+
+  # === commit ===
+  cm = commit       # just alias
+  amend = commit --amend
+
+  # === reset ===
+  unstage = reset HEAD
+  uncommit = reset --mixed HEAD~
+  nevermind = !git reset --hard HEAD && git clean -d -f # reset all indexed file change
+
+  # === checkout ===
+  co = checkout     # just alias
+  cob = checkout -b # create new branch
+  discard = checkout --
+
+  # === log ===
+  wc = whatchanged  # just alias. show commit log and changed files
+
+  # graphical log
+  graph-log  = log --graph -25 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  graph-logs = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+  # === diff ===
+  diffm = diff master         # diff for master
+  diffc = diff --cached       # diff for added file
+  diffs = diff --staged       # same above
+  diffw = diff --color-words  # diff for word only
+  difff = diff --name-only    # diff only file name
+
+  diff-modified-only = diff --diff-filter=M
+  diff-added-only = diff --diff-filter=A
+  diff-deleted-only = diff --diff-filter=D
+  diff-renamed-only = diff --diff-filter=R
+  diff-unmerged-only = diff --name-only --diff-filter=U
+
+  precommit = diff --cached --diff-algorithm=minimal -w
+  code-review = diff master --color-words
+
+  d1 = diff HEAD~             #    before HEAD
+  d2 = diff HEAD~~            # 2  before HEAD
+  d3 = diff HEAD~~~           # 3  before HEAD
+  d4 = diff HEAD~~~~          # 4  before HEAD
+  d5 = diff HEAD~~~~~         # 5  before HEAD
+  d10 = diff HEAD~~~~~~~~~~   # 10 before HEAD
+
+  # === other ===
+  alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort   # show all alias list
+  refresh= !git fetch origin && git remote prune origin                                                        # update remote branch

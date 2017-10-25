@@ -1,0 +1,10 @@
+[include]
+  path = ~/.gitconfig.local
+  path = ~/.gitconfig.common
+[core]
+  editor = vim -c \"set fenc=utf-8\"
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
