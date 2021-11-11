@@ -29,3 +29,8 @@ alias mkdir='mkdir -p'
 alias ..='c ../'
 alias back='pushd'
 alias diff='diff -U1'
+
+# IPを指定してssh接続するためのショートカット
+ssht() {
+    ssh ec2-user@$1 -p 22022 -i ~/.ssh/dev_admin.pem 
+}
