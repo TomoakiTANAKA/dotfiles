@@ -53,9 +53,6 @@ setopt pushd_ignore_dups
 # コマンドミスを修正
 setopt correct
 
-
-
-
 # backspace,deleteキーを使えるように
 stty erase ^H
 bindkey "^[[3~" delete-char
